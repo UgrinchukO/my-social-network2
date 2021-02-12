@@ -1,0 +1,35 @@
+.nav {
+    grid-area: c;
+    background-color: slategray;
+}
+
+.item a {
+    color: powderblue;
+    text-decoration: none;
+    margin-left: 15px;
+}
+
+.item a.active {
+    color: white;
+}
+
+.itemFriends a.active {
+    color: white;
+}
+
+.itemFriends{
+    margin-top: 50px;
+    padding: 18px;
+}
+
+.itemFriends a {
+    color: powderblue;
+    text-decoration: none;
+}
+
+.friendsPage{
+    margin-top: 25px;
+    display: flex;
+    justify-content: flex-start;
+}
+
