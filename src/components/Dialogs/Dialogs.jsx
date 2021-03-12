@@ -2,6 +2,7 @@ import React from 'react'
 import s from "./Dialogs.module.css"
 import DialogsItem from "./DialogsItem/DialogsItem";
 import MessageItem from "./MessageItem/MessageItem";
+import {addMessage} from "../../Redux/state";
 
 
 const Dialogs = (props) => {
@@ -13,7 +14,7 @@ const Dialogs = (props) => {
 
     let addPost = () => {
         let text = itemArea.current.value
-        alert(text)
+        props.addMessage(text)
     }
 
     return (
@@ -25,8 +26,8 @@ const Dialogs = (props) => {
                 {messagesElements}
             </div>
             <div>
-                <textarea ref={itemArea}></textarea>
-                <button className={s.buttonItem} onClick={addPost}>Click!</button>
+                <textarea ref={itemArea}/>
+                <button className={s.buttonItem} onClick={addPost}>new messages!</button>
             </div>
         </div>
     )

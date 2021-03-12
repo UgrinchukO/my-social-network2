@@ -9,6 +9,7 @@ import Settings from "./components/Settings/Settings";
 import News from "./components/News/News";
 import Friends from "./components/Friends/Friends";
 import {BrowserRouter, Route} from "react-router-dom";
+import store from "./Redux/state";
 
 
 const App = (props) => {
@@ -20,7 +21,8 @@ const App = (props) => {
                 <Header/>
                 <Navbar/>
                 <div className="app-wrapper-content">
-                    <Route path='/dialogs' render={() => <Dialogs state={props.state.dialogsPage}/>}/>
+                    <Route path='/dialogs'
+                           render={() => <Dialogs state={props.state.dialogsPage} addMessage={store.addMessage.bind(store)}/>}/>
                     <Route path='/profile' render={() => <Profile
                         profilePage={props.state.profilePage}
                         updateNewPostText={props.updateNewPostText}
