@@ -13,7 +13,8 @@ const Dialogs = (props) => {
 
     let addPost = () => {
         let text = itemArea.current.value
-        alert(text)
+        props.addPost(text)
+        itemArea.current.value = '';
     }
 
     return (
@@ -25,7 +26,7 @@ const Dialogs = (props) => {
                 {messagesElements}
             </div>
             <div>
-                <textarea ref={itemArea}></textarea>
+                <textarea ref={itemArea}/>
                 <button className={s.buttonItem} onClick={addPost}>Click!</button>
             </div>
         </div>
