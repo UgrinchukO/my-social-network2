@@ -1,4 +1,4 @@
-import {rerenderEntireTree} from "../render";
+
 
 let state = {
     dialogsPage: {
@@ -32,7 +32,7 @@ export let addPost = (messagePost) => {
         value: 0
     };
     state.profilePage.posts.push(newPost)
-        rerenderEntireTree(state)
+    rerenderEntireTree(state)
 }
 
 export default state;
