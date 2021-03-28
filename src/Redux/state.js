@@ -1,3 +1,11 @@
+export const addPostActionCreator = (text) => {
+    return {type: 'ADD-POST', messagePost: text}
+}
+
+export const newPostHandlerActionCreator = (text) => {
+    return {type: 'UPDATE-NEW-POST-TEXT', newText: text}
+}
+
 let store = {
     getState() {
         return this._state
