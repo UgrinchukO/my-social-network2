@@ -15,18 +15,17 @@ import store from "./Redux/state";
 const App = (props) => {
 
     return (
-        <BrowserRouter>
+
 
             <div className="app-wrapper">
                 <Header/>
                 <Navbar/>
                 <div className="app-wrapper-content">
                     <Route path='/dialogs'
-                           render={() => <Dialogs state={props.state.dialogsPage} addMessage={store.addMessage.bind(store)}/>}/>
+                           render={() => <Dialogs state={props.state.dialogsPage} dispatch={props.dispatch}/>}/>
                     <Route path='/profile' render={() => <Profile
                         profilePage={props.state.profilePage}
-                        updateNewPostText={props.updateNewPostText}
-                        addPost={props.addPost}
+                        dispatch={props.dispatch}
                     />}/>
 
                     <Route path='/news' render={() => <News/>}/>
@@ -35,7 +34,7 @@ const App = (props) => {
                     <Route path='/friends' render={() => <Friends/>}/>
                 </div>
             </div>
-        </BrowserRouter>
+
     );
 };
 

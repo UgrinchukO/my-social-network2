@@ -1,3 +1,11 @@
+export const addPostActionCreator = (text) => {
+    return {type: 'ADD-POST', messagePost: text}
+}
+
+export const newPostHandlerActionCreator = (text) => {
+    return {type: 'UPDATE-NEW-POST-TEXT', newText: text}
+}
+
 let store = {
     getState() {
         return this._state
@@ -23,47 +31,37 @@ let store = {
             posts: [
                 {message: "how are you?", value: "15"},
                 {message: "what is your name?", value: "20"}
-            ],
-            newPostText: 'skinnyjointt.com'
+            ]
         }
     },
-
     _rerenderEntireTree() {
-        console.log("Save changed!")
+        console.log("save changes!")
     },
 
-    addPost(newItem) {
-        let newPost = {
-            id: 5,
-            message: newItem,
-            value: 11
+    dispatch(action) {
+        if (action.type === 'ADD-POST') {
+            let newPost = {
+                id: 5,
+                message: action.messagePost,
+                value: 0
+            };
+            store._state.profilePage.posts.push(newPost)
+            store._rerenderEntireTree(store._state)
+        } else if (action.type === 'ADD-MESSAGE') {
+            let newPost = {
+                message: action.messageText,
+            };
+            store._state.dialogsPage.messages.push(newPost)
+            store._rerenderEntireTree(store._state)
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            store._state.profilePage.newPostText = action.newText
+            store._rerenderEntireTree(store._state)
         }
-
-        this._state.profilePage.posts.push(newPost)
-        this._state.profilePage.newItem = ' '
-        this._rerenderEntireTree(this._state)
-    },
-
-    addMessage(textMessage) {
-        let newMessage = {
-            message: textMessage
-        }
-
-        this._state.dialogsPage.messages.push(newMessage)
-        this._state.dialogsPage.textMessage = ' '
-        this._rerenderEntireTree(this._state)
-    },
-
-    updateNewPostText(newText) {
-        this._state.profilePage.newPostText = newText;
-        this._rerenderEntireTree(this._state)
-
     },
 
     subscribe(observer) {
-        this._rerenderEntireTree = observer;
+        store._rerenderEntireTree = observer
     }
 }
-
 
 export default store;
