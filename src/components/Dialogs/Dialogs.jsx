@@ -2,7 +2,8 @@ import React from 'react'
 import s from "./Dialogs.module.css"
 import DialogsItem from "./DialogsItem/DialogsItem";
 import MessageItem from "./MessageItem/MessageItem";
-import {addMessage} from "../../Redux/state";
+import {messageActionCreator} from "../../Redux/reducerDialogs";
+
 
 
 const Dialogs = (props) => {
@@ -14,8 +15,8 @@ const Dialogs = (props) => {
 
     let addPost = () => {
         let text = itemArea.current.value
-        props.dispatch({type: 'ADD-MESSAGE', messageText: text})
-        itemArea.current.value = '';
+        props.dispatch(messageActionCreator(text))
+        itemArea.current.value = ''
     }
 
     return (

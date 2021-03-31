@@ -1,10 +1,5 @@
-export const addPostActionCreator = (text) => {
-    return {type: 'ADD-POST', messagePost: text}
-}
-
-export const newPostHandlerActionCreator = (text) => {
-    return {type: 'UPDATE-NEW-POST-TEXT', newText: text}
-}
+import reducerProfile from "./reducerProfile";
+import reducerDialogs from "./reducerDialogs";
 
 let store = {
     getState() {
@@ -38,25 +33,10 @@ let store = {
         console.log("save changes!")
     },
 
+
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
-            let newPost = {
-                id: 5,
-                message: action.messagePost,
-                value: 0
-            };
-            store._state.profilePage.posts.push(newPost)
-            store._rerenderEntireTree(store._state)
-        } else if (action.type === 'ADD-MESSAGE') {
-            let newPost = {
-                message: action.messageText,
-            };
-            store._state.dialogsPage.messages.push(newPost)
-            store._rerenderEntireTree(store._state)
-        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
-            store._state.profilePage.newPostText = action.newText
-            store._rerenderEntireTree(store._state)
-        }
+        store._state.profilePage = reducerProfile(store._state.profilePage, action)
+        store._state.dialogsPage = reducerDialogs(store._state.dialogsPage, action)
     },
 
     subscribe(observer) {
