@@ -11,28 +11,24 @@ import Friends from "./components/Friends/Friends";
 import {Route} from "react-router-dom";
 
 
-
 const App = (props) => {
 
     return (
 
 
-            <div className="app-wrapper">
-                <Header/>
-                <Navbar/>
-                <div className="app-wrapper-content">
-                    <Route path='/dialogs'
-                           render={() => <Dialogs state={props.state.dialogsPage} dispatch={props.dispatch}/>}/>
-                    <Route path='/profile' render={() => <Profile
-                        profilePage={props.state.profilePage}
-                        dispatch={props.dispatch}
-                    />}/>
-                    <Route path='/news' render={() => <News/>}/>
-                    <Route path='/music' render={() => <Music/>}/>
-                    <Route path='/settings' render={() => <Settings/>}/>
-                    <Route path='/friends' render={() => <Friends/>}/>
-                </div>
+        <div className="app-wrapper">
+            <Header/>
+            <Navbar/>
+            <div className="app-wrapper-content">
+                <Route path='/dialogs'
+                       render={() => <Dialogs state={props.state.dialogsPage} dispatch={props.dispatch}/>}/>
+                <Route path='/profile' render={() => <Profile store={props.store}/>}/>
+                <Route path='/news' render={() => <News/>}/>
+                <Route path='/music' render={() => <Music/>}/>
+                <Route path='/settings' render={() => <Settings/>}/>
+                <Route path='/friends' render={() => <Friends/>}/>
             </div>
+        </div>
 
     );
 };

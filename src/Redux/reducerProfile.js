@@ -1,4 +1,11 @@
-const reducerProfile = (state, action) => {
+let initialState = ({
+    posts: [
+        {message: "how are you?", value: "15"},
+        {message: "what is your name?", value: "20"}
+    ]
+})
+
+const reducerProfile = (state = initialState, action) => {
     switch (action.type) {
         case 'ADD-POST':
             let newPost = {
