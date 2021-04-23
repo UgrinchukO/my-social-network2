@@ -1,31 +1,32 @@
 import React from "react";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
+import {addPostActionCreator,newPostHandlerActionCreator} from "../../../Redux/reducerProfile";
 
 
 const MyPosts = (props) => {
+
 
     let postsElement = props.posts.map(p => <Post message={p.message} value={p.value}/>)
 
     let newPostElement = React.createRef()
 
-    let addNewPost = () => {
+    let addPost = () => {
         let text = newPostElement.current.value;
-        props.addPost(text);
+        props.dispatch(addPostActionCreator(text))
         newPostElement.current.value = ''
     }
 
     let newPostHandler = () => {
         let text = newPostElement.current.value;
-        props.updateNewPostText(text)
+        props.dispatch(newPostHandlerActionCreator(text))
     }
-
 
     return (
         <div className={s.posts}>
             <div>
                 <textarea ref={newPostElement} onChange={newPostHandler} value={props.newPostText}/>
-                <button onClick={addNewPost}>add new post!</button>
+                <button onClick={addPost}>add new post!</button>
             </div>
             <div className={s.item}>
                 {postsElement}

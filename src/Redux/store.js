@@ -14,6 +14,7 @@ let store = {
                 {name: 'Roman', id: '4'},
                 {name: 'Oleg', id: '5'}
             ],
+
             messages: [
                 {message: 'Hi'},
                 {message: "How are you?"},
@@ -25,8 +26,7 @@ let store = {
             posts: [
                 {message: "how are you?", value: "15"},
                 {message: "what is your name?", value: "20"}
-            ],
-            newPostText: ''
+            ]
         }
     },
     _rerenderEntireTree() {
@@ -37,7 +37,6 @@ let store = {
     dispatch(action) {
         store._state.profilePage = reducerProfile(store._state.profilePage, action)
         store._state.dialogsPage = reducerDialogs(store._state.dialogsPage, action)
-        store._rerenderEntireTree(store._state)
     },
 
     subscribe(observer) {
