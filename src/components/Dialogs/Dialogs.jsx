@@ -17,7 +17,11 @@ const Dialogs = (props) => {
         let text = itemArea.current.value
         props.addMessage(text)
         itemArea.current.value = ''
+    }
 
+    let updatePost = () => {
+        let text = itemArea.current.value
+        props.updateNewPost(text)
     }
 
     return (
@@ -29,7 +33,7 @@ const Dialogs = (props) => {
                 {messagesElements}
             </div>
             <div>
-                <textarea ref={itemArea}/>
+                <textarea ref={itemArea} onChange={updatePost} value={props.messageText}/>
                 <button className={s.buttonItem} onClick={addPost}>Click!</button>
             </div>
         </div>
