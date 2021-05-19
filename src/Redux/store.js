@@ -20,14 +20,14 @@ let store = {
                 {message: "How are you?"},
                 {message: 'How old are you?'},
                 {message: 'Where are you live?'}
-            ]
+            ],
+            messageText: ''
         },
         profilePage: {
             posts: [
                 {message: "how are you?", value: "15"},
                 {message: "what is your name?", value: "20"}
-            ],
-            newPostText: 'it-cama'
+            ]
         }
     },
     _rerenderEntireTree() {
@@ -38,7 +38,6 @@ let store = {
     dispatch(action) {
         store._state.profilePage = reducerProfile(store._state.profilePage, action)
         store._state.dialogsPage = reducerDialogs(store._state.dialogsPage, action)
-
         store._rerenderEntireTree(store._state)
     },
 
@@ -46,5 +45,3 @@ let store = {
         store._rerenderEntireTree = observer
     }
 }
-
-export default store;
