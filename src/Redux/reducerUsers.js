@@ -6,6 +6,7 @@ let initialState = {
     users: [
         {
             id: "1",
+            photoUrl:'https://img.icons8.com/bubbles/2x/man-with-monitor.png',
             followed: 'true',
             fullName: "Oleg",
             status: 'I am a boss!',
@@ -13,6 +14,7 @@ let initialState = {
         },
         {
             id: "2",
+            photoUrl:'https://img.icons8.com/bubbles/2x/man-with-monitor.png',
             followed: 'true',
             fullName: "Roman",
             status: 'I am a boss too!',
@@ -20,6 +22,7 @@ let initialState = {
         },
         {
             id: "3",
+            photoUrl:'https://img.icons8.com/bubbles/2x/man-with-monitor.png',
             followed: 'false',
             fullName: "Nazar",
             status: 'I am a boss too!',
@@ -27,6 +30,7 @@ let initialState = {
         },
         {
             id: "4",
+            photoUrl:'https://img.icons8.com/bubbles/2x/man-with-monitor.png',
             followed: 'true',
             fullName: "Ruslan",
             status: 'I am a boss too!',
