@@ -2,23 +2,19 @@ import React from 'react'
 import s from "./Dialogs.module.css"
 import DialogsItem from "./DialogsItem/DialogsItem";
 import MessageItem from "./MessageItem/MessageItem";
-import {messageActionCreator} from "../../Redux/reducerDialogs";
-
-
 
 const Dialogs = (props) => {
 
-    let dialogElements = props.state.dialogs.map(dialog => <DialogsItem name={dialog.name} id={dialog.id}/>)
-    let messagesElements = props.state.messages.map(m => <MessageItem message={m.message}/>)
+    let dialogElements = props.dialogs.map(dialog => <DialogsItem name={dialog.name} id={dialog.id}/>)
+    let messagesElements = props.messages.map(m => <MessageItem message={m.message}/>)
 
     let itemArea = React.createRef()
 
-    let addPost = () => {
+    let addNewMessage = () => {
         let text = itemArea.current.value
-        props.dispatch(messageActionCreator(text))
+        props.addMessage(text)
         itemArea.current.value = ''
     }
-
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItem}>
@@ -29,7 +25,7 @@ const Dialogs = (props) => {
             </div>
             <div>
                 <textarea ref={itemArea}/>
-                <button className={s.buttonItem} onClick={addPost}>Click!</button>
+                <button className={s.buttonItem} onClick={addNewMessage}>Click!</button>
             </div>
         </div>
     )
