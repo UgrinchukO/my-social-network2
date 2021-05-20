@@ -10,12 +10,12 @@ const Users = (props) => {
                     <div>
                         <img src={u.photoUrl}/>
                     </div>
-                    <div>{u.fullName}</div>
                     <div>
                         { u.followed
-                            ? <button onClick={() => {props.UNFOLLOW(u.id)}}>Unfollow</button>
-                            : <button onClick={() => {props.FOLLOW(u.id)}}>Follow</button>}
+                            ? <button onClick={() => {props.unfolded(u.id)}}>Unfolded</button>
+                            : <button onClick={() => {props.follow(u.id)}}>Follow</button>}
                     </div>
+                    <div>{u.fullName}</div>
                     <div>{u.status}</div>
                     <div>{u.location.city}</div>
                     <div>{u.location.country}</div>
