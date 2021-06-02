@@ -1,0 +1,12 @@
+.header {
+    grid-area: h;
+    /*background-color: b;*/
+    background: url("https://image.freepik.com/free-photo/dark-blue-background-with-the-texture-of-the-old-wall_147689-259.jpg");
+    background-size: 100%;
+}
+
+.header img {
+    width: 50px;
+    height: 50px;
+    margin-left: 10px;
+}
