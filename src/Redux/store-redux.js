@@ -7,7 +7,7 @@ import reducerUsers from "./reducerUsers";
 let reducers = combineReducers({
     dialogsPage: reducerDialogs,
     profilePage: reducerProfile,
-    usersPage: reducerUsers
+    usersPage: reducerUsers,
 })
 
 let store = createStore(reducers)
