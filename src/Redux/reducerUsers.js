@@ -8,7 +8,7 @@ const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 let initialState = {
     users: [],
     pageSize: 5,
-    totalUsersCount: 15,
+    totalUsersCount: 40,
     currentPage: 2
 }
 
@@ -34,10 +34,14 @@ const reducerUsers = (state = initialState, action) => {
                     return u
                 })
             }
-        case SET_USERS:
+        case SET_USERS: {
             return {...state, users: [...action.users]}
-        case SET_CURRENT_PAGE:
-            return {...state, currentPage: [...action.currentPage]}
+        }
+
+        case SET_CURRENT_PAGE: {
+            return {...state, currentPage: action.currentPage}
+        }
+        
         default:
             return state
     }
@@ -49,6 +53,6 @@ export const unfoldedAC = (userId) => ({type: 'UNFOLDED', userId})
 
 export const setUsersAC = (users) => ({type: 'SET_USERS', users})
 
-export const setCurrentPage = (currentPage) => ({type: 'SET_CURRENT_PAGE', currentPage})
+export const setCurrentPageAC = (currentPage) => ({type: 'SET_CURRENT_PAGE', currentPage})
 
 export default reducerUsers;

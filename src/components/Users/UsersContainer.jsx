@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from "react-redux";
-import {followAC, setCurrentPage, setUsersAC, unfoldedAC} from "../../Redux/reducerUsers";
+import {followAC, setCurrentPage, setCurrentPageAC, setUsersAC, unfoldedAC} from "../../Redux/reducerUsers";
 import Users from "./Users";
 
 
@@ -25,8 +25,8 @@ let mapDispatchToProps = (dispatch) => {
         setUsers: (users) => {
             dispatch(setUsersAC(users))
         },
-        currentPage: (currentPage) => {
-            dispatch: (setCurrentPage(currentPage))
+        setCurrentPage: (currentPage) => {
+            dispatch: (setCurrentPageAC(currentPage))
         }
         // setPageSize: (pageSize) => {
         //     dispatch(setPageSizeAC(pageSize))
