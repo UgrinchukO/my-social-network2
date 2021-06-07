@@ -1,15 +1,15 @@
-const FOLLOW = 'FOLLOW'
-const UNFOLDED = 'UNFOLDED'
-const SET_USERS = 'SET_USERS'
+const FOLLOW = 'FOLLOW';
+const UNFOLDED = 'UNFOLDED';
+const SET_USERS = 'SET_USERS';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
-//const setPageSizeAC = 'SET_PAGE_SIZE'
-//const setTotalUsersCountAC = 'SET_TOTAL_USERS_COUNT'
+const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT'
+
 
 let initialState = {
-    users: [],
+    users: [ ],
     pageSize: 5,
-    totalUsersCount: 40,
-    currentPage: 2
+    totalUsersCount: 0,
+    currentPage: 4,
 }
 
 const reducerUsers = (state = initialState, action) => {
@@ -41,6 +41,10 @@ const reducerUsers = (state = initialState, action) => {
         case SET_CURRENT_PAGE: {
             return {...state, currentPage: action.currentPage}
         }
+
+        case SET_TOTAL_USERS_COUNT: {
+            return {...state, totalUsersCount: action.totalCount}
+        }
         
         default:
             return state
@@ -54,5 +58,12 @@ export const unfoldedAC = (userId) => ({type: 'UNFOLDED', userId})
 export const setUsersAC = (users) => ({type: 'SET_USERS', users})
 
 export const setCurrentPageAC = (currentPage) => ({type: 'SET_CURRENT_PAGE', currentPage})
+
+export const setTotalUsersCountAC = (totalCount) => ({type: 'SET_TOTAL_USERS_COUNT', totalCount})
+
+
+
+
+
 
 export default reducerUsers;
