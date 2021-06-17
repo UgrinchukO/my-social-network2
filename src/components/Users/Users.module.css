@@ -1,14 +1,14 @@
-.itemName img {
+.item img {
     width: 80px;
     height: 80px;
-    margin-left: 15px;
     border-radius: 50px;
-}
-
-.butName {
     margin-left: 15px;
 }
 
-.userName {
-    margin-left: 15px;
+.buttonName {
+    margin-left: 10px;
+}
+
+.active {
+    font-weight: bold;
 }

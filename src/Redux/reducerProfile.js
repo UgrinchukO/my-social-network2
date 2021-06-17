@@ -16,7 +16,6 @@ const reducerProfile = (state = initialState, action) => {
             let stateCopy = {...state}
             stateCopy.posts = [...state.posts]
             stateCopy.posts.push(newPost)
-            stateCopy.newPostText = [...state.newPostText]
             stateCopy.newPostText = ''
             return stateCopy;
         }

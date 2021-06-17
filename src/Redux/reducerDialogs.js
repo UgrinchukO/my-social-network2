@@ -25,7 +25,6 @@ const reducerDialogs = (state = initialState, action) => {
             let stateCopy = {...state}
             stateCopy.messages = [...state.messages]
             stateCopy.messages.push(newPost)
-            stateCopy.messageText = [...state.messageText]
             stateCopy.messageText = ''
             return stateCopy
         }
