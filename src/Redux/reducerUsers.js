@@ -55,17 +55,17 @@ const reducerUsers = (state = initialState, action) => {
     }
 }
 
-export const followAC = (userId) => ({type: 'FOLLOW', userId})
+export const follow = (userId) => ({type: 'FOLLOW', userId})
 
-export const unfoldedAC = (userId) => ({type: 'UNFOLDED', userId})
+export const unfolded = (userId) => ({type: 'UNFOLDED', userId})
 
-export const setUsersAC = (users) => ({type: 'SET_USERS', users})
+export const setUsers = (users) => ({type: 'SET_USERS', users})
 
-export const setCurrentPageAC = (currentPage) => ({type: 'SET_CURRENT_PAGE', currentPage})
+export const setCurrentPage = (currentPage) => ({type: 'SET_CURRENT_PAGE', currentPage})
 
-export const setTotalUsersCountAC = (totalCount) => ({type: 'SET_TOTAL_USERS_COUNT', totalCount})
+export const setTotalUsersCount = (totalCount) => ({type: 'SET_TOTAL_USERS_COUNT', totalCount})
 
-export const setIsFetchingAC = (isFetching) => ({type: 'SET_IS_FETCHING', isFetching})
+export const setIsFetching = (isFetching) => ({type: 'SET_IS_FETCHING', isFetching})
 
 
 export default reducerUsers;

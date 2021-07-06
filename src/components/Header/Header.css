@@ -10,3 +10,11 @@
     height: 50px;
     margin-left: 10px;
 }
+
+.loginAuth {
+    float: right;
+}
+
+.loginAuth a {
+    color: white;
+}
