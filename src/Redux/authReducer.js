@@ -1,3 +1,6 @@
+import {authMe, usersAPI} from "../api/api";
+import {setIsFollowingToggle, unfoldedSuccess} from "./reducerUsers";
+
 let initialState = {
     id: null,
     email: null,
@@ -24,5 +27,15 @@ const reducerAuth = (state = initialState, action) => {
 
 export const setUserAuthData = (id, email, login) => ({type: 'SET_DATA_USER', data: {id, email, login}})
 
-
+export const getAuthUserData = (userId) => {
+    return (dispatch) => {
+        authMe.me()
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    let {id, login, email} = response.data.data
+                    dispatch(setUserAuthData(id, login, email))
+                }
+            })
+    }
+}
 export default reducerAuth;

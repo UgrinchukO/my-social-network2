@@ -20,12 +20,6 @@ class UsersContainer extends React.Component {
 
     changedPage = (p) => {
         this.props.getUsersThunk(p, this.props.currentPage, this.props.pageSize);
-        // this.props.setIsFetching(true)
-        // usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
-        //     this.props.setIsFetching(false)
-        //     this.props.setUsers(data.items)
-        // })
-        // this.props.setCurrentPage(p)
     }
 
     render() {
@@ -41,7 +35,6 @@ class UsersContainer extends React.Component {
                 users={this.props.users}
                 unfolded={this.props.unfolded}
                 follow={this.props.follow}
-                setIsFollowingToggle={this.props.setIsFollowingToggle}
                 toggleFollowingProgress={this.props.toggleFollowingProgress}
             />
         </>
@@ -60,29 +53,6 @@ let mapStateToProps = (state) => {
         setIsFollowingToggle: state.usersPage.setIsFollowingToggle
     }
 }
-
-// let mapDispatchToProps = (dispatch) => {
-//     return {
-//         follow: (userId) => {
-//             dispatch(followAC(userId))
-//         },
-//         unfolded: (userId) => {
-//             dispatch(unfoldedAC(userId))
-//         },
-//         setUsers: (users) => {
-//             dispatch(setUsersAC(users))
-//         },
-//         setCurrentPage: (currentPage) => {
-//             dispatch(setCurrentPageAC(currentPage))
-//         },
-//         setTotalUsersCount: (totalCount) => {
-//             dispatch(setTotalUsersCountAC(totalCount))
-//         },
-//         setIsFetching: (isFetching) => {
-//             dispatch(setIsFetchingAC(isFetching))
-//         }
-//     }
-// }
 
 export default connect(mapStateToProps, {
     follow, unfolded,

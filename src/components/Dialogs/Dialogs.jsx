@@ -2,6 +2,7 @@ import React from 'react'
 import s from "./Dialogs.module.css"
 import DialogsItem from "./DialogsItem/DialogsItem";
 import MessageItem from "./MessageItem/MessageItem";
+import {Redirect} from "react-router-dom";
 
 
 const Dialogs = (props) => {
@@ -23,6 +24,8 @@ const Dialogs = (props) => {
         let text = itemArea.current.value
         props.updateNewPost(text)
     }
+
+
 
     return (
         <div className={s.dialogs}>

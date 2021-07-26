@@ -1,3 +1,7 @@
+import {usersAPI} from "../api/api";
+import {setIsFollowingToggle, unfoldedSuccess} from "./reducerUsers";
+import ProfileContainer from "../components/Profile/ProfileContainer";
+
 let initialState = {
     posts: [
         {message: "how are you?", value: "15"},
@@ -41,5 +45,12 @@ export const newPostHandlerActionCreator = (text) => ({type: 'UPDATE-NEW-POST-TE
 
 export const setProfile = (profile) => ({type: 'SET_PROFILE', profile})
 
+export const getUserProfile = (userId) => {
+    return (dispatch) => {
+        usersAPI.getProfile(userId).then(response => {
+            dispatch(setProfile(response.data))
+        })
+    }
+}
 
 export default reducerProfile;
