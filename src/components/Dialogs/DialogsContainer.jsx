@@ -2,7 +2,7 @@ import React from 'react'
 import {messageActionCreator, messageUpdateCreator} from "../../Redux/reducerDialogs";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
-import {Redirect, withRouter} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 

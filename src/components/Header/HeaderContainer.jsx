@@ -1,9 +1,8 @@
 import React from "react";
 import {connect} from "react-redux";
-import {getAuthUserData, setUserAuthData} from "../../Redux/authReducer";
+import {getAuthUserData} from "../../Redux/authReducer";
 import {withRouter} from "react-router-dom";
 import Header from "./Header";
-import {authMe} from "../../api/api";
 
 
 
