@@ -3,6 +3,8 @@ import s from "./Dialogs.module.css"
 import DialogsItem from "./DialogsItem/DialogsItem";
 import MessageItem from "./MessageItem/MessageItem";
 import {Redirect} from "react-router-dom";
+import {Field, reduxForm} from "redux-form";
+
 
 
 const Dialogs = (props) => {
@@ -14,18 +16,9 @@ const Dialogs = (props) => {
 
     let itemArea = React.createRef()
 
-    let addPost = () => {
-        let text = itemArea.current.value
-        props.addMessage(text)
-        itemArea.current.value = ''
+    let addNewMessage = (values) => {
+        props.addMessage(values.messageText)
     }
-
-    let updatePost = () => {
-        let text = itemArea.current.value
-        props.updateNewPost(text)
-    }
-
-
 
     return (
         <div className={s.dialogs}>
@@ -35,12 +28,20 @@ const Dialogs = (props) => {
             <div className={s.messages}>
                 {messagesElements}
             </div>
-            <div>
-                <textarea ref={itemArea} onChange={updatePost} value={props.messageText}/>
-                <button className={s.buttonItem} onClick={addPost}>Click!</button>
-            </div>
+            <AddNewMessageForm onSubmit={addNewMessage}/>
         </div>
     )
 }
+
+let addNewMessage = (props) => {
+    return (
+        <form onSubmit={props.handleSubmit}>
+            <Field name='messageText' component='textarea'/>
+            <button className={s.buttonItem}>Click!</button>
+        </form>
+    )
+}
+
+let AddNewMessageForm = reduxForm({form: "addNewMessage"})(addNewMessage)
 
 export default Dialogs

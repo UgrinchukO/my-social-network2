@@ -1,32 +1,24 @@
 import React from "react";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
+import reducerAuth from "../../../Redux/authReducer";
+import {Field, reduxForm} from "redux-form";
 
 
 const MyPosts = (props) => {
-
     let postsElement = props.posts.map(p => <Post message={p.message} value={p.value}/>)
 
     let newPostElement = React.createRef()
 
-    let addNewPost = () => {
-        let text = newPostElement.current.value;
-        props.addPost(text);
-        newPostElement.current.value = ''
+    let addNewPost = (values) => {
+        props.addPost(values.newPostText);
     }
-
-    let newPostHandler = () => {
-        let text = newPostElement.current.value;
-        props.updateNewPostText(text)
-    }
-
 
     return (
         <div className={s.posts}>
-            <div>
-                <textarea ref={newPostElement} onChange={newPostHandler} value={props.newPostText}/>
-                <button onClick={addNewPost}>add new post!</button>
-            </div>
+
+            <AddPostReduxForm onSubmit={addNewPost}/>
+
             <div className={s.item}>
                 {postsElement}
                 <Post/>
@@ -34,5 +26,17 @@ const MyPosts = (props) => {
         </div>
     );
 };
+
+const AddPostForm = (props) => {
+    return (
+        <form onSubmit={props.handleSubmit}>
+            <Field name='newPostText' component='textarea'/>
+            <button>add new post!</button>
+        </form>
+    )
+}
+
+const AddPostReduxForm = reduxForm({form: 'profileAddNewPostForm'})(AddPostForm)
+
 
 export default MyPosts;

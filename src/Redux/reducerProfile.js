@@ -6,7 +6,7 @@ let initialState = {
     posts: [
         {message: "how are you?", value: "15"},
         {message: "what is your name?", value: "20"}
-    ], newPostText: '',
+    ],
     profile: null,
     status: ""
 }
@@ -20,7 +20,7 @@ const reducerProfile = (state = initialState, action) => {
         case 'ADD-POST': {
             let newPost = {
                 id: 5,
-                message: state.newPostText,
+                message: action.newPostText,
                 value: 0
             };
             let stateCopy = {...state}
@@ -28,11 +28,6 @@ const reducerProfile = (state = initialState, action) => {
             stateCopy.posts.push(newPost)
             stateCopy.newPostText = ''
             return stateCopy;
-        }
-        case 'UPDATE-NEW-POST-TEXT': {
-            let stateCopy = {...state}
-            stateCopy.newPostText = action.newText
-            return stateCopy
         }
         case SET_PROFILE: {
             return {...state, profile: action.profile}
@@ -48,9 +43,7 @@ const reducerProfile = (state = initialState, action) => {
     }
 }
 
-export const addPostActionCreator = () => ({type: 'ADD-POST'})
-
-export const newPostHandlerActionCreator = (text) => ({type: 'UPDATE-NEW-POST-TEXT', newText: text})
+export const addPostActionCreator = (newPostText) => ({type: 'ADD-POST', newPostText: newPostText})
 
 export const setProfile = (profile) => ({type: 'SET_PROFILE', profile})
 
@@ -76,9 +69,9 @@ export const getUserStatus = (userId) => (dispatch) => {
 
 export const getUpdateUserStatus = (status) => (dispatch) => {
     profileAPI.updateStatus(status).then(response => {
-        if (response.data.resultCode === 0){
+        if (response.data.resultCode === 0) {
             dispatch(setUpdateStatus(status))
-    }
+        }
     });
 }
 
