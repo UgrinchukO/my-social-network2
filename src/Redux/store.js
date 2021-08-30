@@ -30,42 +30,6 @@ let store = {
                 {message: "what is your name?", value: "20"}
             ]
         },
-
-        // usersPage: {
-        //     users: [
-        //         {
-        //             id: "1",
-        //             photoUrl: 'https://img.icons8.com/bubbles/2x/man-with-monitor.png',
-        //             followed: 'true',
-        //             fullName: "Oleg",
-        //             status: 'I am a boss!',
-        //             location: {city: 'Poltava', country: 'Ukraine'}
-        //         },
-        //         {
-        //             id: "2",
-        //             photoUrl: 'https://img.icons8.com/bubbles/2x/man-with-monitor.png',
-        //             followed: 'true',
-        //             fullName: "Roman",
-        //             status: 'I am a boss too!',
-        //             location: {city: 'Kyiv', country: 'Ukraine'}
-        //         },
-        //         {
-        //             id: "3",
-        //             photoUrl: 'https://img.icons8.com/bubbles/2x/man-with-monitor.png',
-        //             followed: 'false',
-        //             fullName: "Nazar",
-        //             status: 'I am a boss too!',
-        //             location: {city: 'Ternopil', country: 'Ukraine'}
-        //         },
-        //         {
-        //             id: "4",
-        //             photoUrl: 'https://img.icons8.com/bubbles/2x/man-with-monitor.png',
-        //             followed: 'true',
-        //             fullName: "Ruslan",
-        //             status: 'I am a boss too!',
-        //             location: {city: 'Kharkiv', country: 'Ukraine'}
-        //         }]
-        // }
     },
     _rerenderEntireTree() {
         console.log("save changes!")
@@ -75,7 +39,6 @@ let store = {
     dispatch(action) {
         store._state.profilePage = reducerProfile(store._state.profilePage, action)
         store._state.dialogsPage = reducerDialogs(store._state.dialogsPage, action)
-        // store._state.usersPage = reducerUsers(store._state.usersPage, action)
         store._rerenderEntireTree(store._state)
     },
 

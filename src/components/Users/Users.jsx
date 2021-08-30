@@ -24,24 +24,25 @@ const Users = (props) => {
         </div>
         {
             props.users.map(u => <div key={u.id}>
-                <NavLink to={'/profile' + u.id}>
+                <NavLink to={'/profile/' + u.id}>
                     <div>
                         <img src={u.photos.small != null ? u.photos.small : userPhoto}/>
                     </div>
                 </NavLink>
                 <div className={s.buttonName}>
                     {u.followed
-                        ? <button onClick={() => {
+                        ? <button disabled={props.toggleFollowingProgress.some(id => id === u.id)} onClick={() => {
                             props.unfolded(u.id)
                         }}>Unfolded</button>
-                        : <button onClick={() => {
+
+                        : <button disabled={props.toggleFollowingProgress.some(id => id === u.id)} onClick={() => {
                             props.follow(u.id)
                         }}>Follow</button>}
                 </div>
                 <span>
-                        <div>{u.name}</div>
-                    <div>{u.status}</div>
-                    </span>
+                            <div>{u.name}</div>
+                            <div>{u.status}</div>
+                            </span>
             </div>)
         }
     </div>
