@@ -1,0 +1,24 @@
+ul li {
+  list-style-type: none;
+  text-align: center;
+}
+
+.app-wrapper {
+  display: grid;
+  width: 1200px;
+  margin: 0 auto;
+
+  grid-template-areas:
+    "h h"
+    "c n";
+
+  grid-template-rows: 60px, 1fr;
+  grid-template-columns: 2fr, 10fr;
+}
+
+.app-wrapper-content {
+  grid-area: n;
+  background-color: royalblue;
+  opacity: 86%;
+}
+
