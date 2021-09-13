@@ -7,6 +7,7 @@ import {login} from "../../Redux/authReducer";
 import {Redirect} from "react-router-dom";
 import s from "../common/FormControls/FormControl.module.css"
 
+
 const LoginForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
@@ -43,7 +44,6 @@ const Login = (props) => {
             Login
         </h1>
         <LoginReduxForm onSubmit={onSubmit}/>
-
     </div>
 }
 
@@ -52,3 +52,5 @@ let mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps, {login})(Login)
+
+

@@ -24,7 +24,6 @@ const reducerAuth = (state = initialState, action) => {
     }
 }
 
-
 export const setUserAuthData = (id, email, login, isAuth) => ({
     type: 'SET_DATA_USER',
     payload: {id, email, login, isAuth}
@@ -41,7 +40,6 @@ export const getAuthUserData = (userId) => {
             })
     }
 }
-
 export const login = (email, password, rememberMe) => {
     return (dispatch) => {
         authMe.login(email, password, rememberMe)

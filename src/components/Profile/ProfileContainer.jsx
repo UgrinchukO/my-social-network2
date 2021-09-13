@@ -33,7 +33,6 @@ let mapStateToProps = (state) => ({
     status: state.profilePage.status,
     authorizedUserId: state.userId,
     isAuth: state.auth.isAuth
-
 })
 
 let mapStateToPropsForRedirect = (state) => ({
