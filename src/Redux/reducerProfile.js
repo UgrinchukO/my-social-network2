@@ -7,7 +7,7 @@ let initialState = {
         {message: "how are you?", value: "15"},
         {message: "what is your name?", value: "20"}
     ],
-    profile: {},
+    profile: "",
     status: ""
 }
 

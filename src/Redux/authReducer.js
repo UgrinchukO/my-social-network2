@@ -15,8 +15,7 @@ const reducerAuth = (state = initialState, action) => {
         case SET_DATA_USER: {
             return {
                 ...state,
-                ...action.payload,
-                isAuth: true
+                ...action.payload
             }
         }
         default:
@@ -59,7 +58,7 @@ export const logout = () => {
         authMe.logout()
             .then(response => {
                 if (response.data.resultCode === 0) {
-                    dispatch(getAuthUserData(null, null, null, false))
+                    dispatch(setUserAuthData(null, null, null, false))
                 }
             })
     }

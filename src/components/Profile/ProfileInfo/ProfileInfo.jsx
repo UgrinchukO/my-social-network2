@@ -10,11 +10,8 @@ const ProfileInfo = (props) => {
     return (
         <div>
             <div className={`${s.item} ${s.active}`}>
-                <img
-                    src="https://clipart-db.ru/file_content/rastr/background_065.jpg"
-                    alt="not img"
-                ></img>
-                <img src={props.profile.image}/>
+                <img src="https://clipart-db.ru/file_content/rastr/background_065.jpg"/>
+                <img src={props.profile.photos.large}/>
                 <ProfileStatus status={props.status}/>
             </div>
         </div>
