@@ -1,7 +1,8 @@
 import React from "react";
 import s from "./ProfileInfo.module.css"
 import Preloader from "../../common/Preloader";
-import ProfileStatus from "./ProfileStatus";
+
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 const ProfileInfo = (props) => {
     if (!props.profile) {
@@ -12,7 +13,7 @@ const ProfileInfo = (props) => {
             <div className={`${s.item} ${s.active}`}>
                 <img src="https://clipart-db.ru/file_content/rastr/background_065.jpg"/>
                 <img src={props.profile.photos.large}/>
-                <ProfileStatus status={props.status}/>
+                <ProfileStatusWithHooks status={props.status}/>
             </div>
         </div>
     );
