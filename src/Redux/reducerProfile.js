@@ -1,6 +1,4 @@
 import {profileAPI, usersAPI} from "../api/api";
-import {setIsFollowingToggle, unfoldedSuccess} from "./reducerUsers";
-import ProfileContainer from "../components/Profile/ProfileContainer";
 
 let initialState = {
     posts: [
@@ -13,7 +11,7 @@ let initialState = {
 
 const SET_PROFILE = 'SET_PROFILE'
 const SET_STATUS = 'SET_STATUS'
-const SET_UPDATE_STATUS = 'SET_UPDATE_STATUS'
+// const SET_UPDATE_STATUS = 'SET_UPDATE_STATUS'
 
 const reducerProfile = (state = initialState, action) => {
     switch (action.type) {
@@ -35,9 +33,9 @@ const reducerProfile = (state = initialState, action) => {
         case SET_STATUS: {
             return {...state, status: action.status}
         }
-        case SET_UPDATE_STATUS: {
-            return {...state, status: action.status}
-        }
+        // case SET_UPDATE_STATUS: {
+        //     return {...state, status: action.status}
+        // }
         default:
             return state
     }
@@ -47,9 +45,9 @@ export const addPostActionCreator = (newPostText) => ({type: 'ADD-POST', newPost
 
 export const setProfile = (profile) => ({type: 'SET_PROFILE', profile})
 
-export const setStatus = (status) => ({type: 'SET_STATUS', status})
+export const setStatus = (status) => ({type: 'SET_STATUS', status: status})
 
-export const setUpdateStatus = (status) => ({type: 'SET_UPDATE_STATUS', status})
+// export const setUpdateStatus = (status) => ({type: 'SET_UPDATE_STATUS', status: status})
 
 
 export const getUserProfile = (userId) => {
@@ -60,17 +58,17 @@ export const getUserProfile = (userId) => {
     }
 }
 
-export const getUserStatus = (userId) => (dispatch) => {
+export const getStatus = (userId) => (dispatch) => {
     profileAPI.getStatus(userId).then(response => {
         debugger;
         dispatch(setStatus(response.data))
     })
 }
 
-export const getUpdateUserStatus = (status) => (dispatch) => {
+export const updateStatus = (status) => (dispatch) => {
     profileAPI.updateStatus(status).then(response => {
         if (response.data.resultCode === 0) {
-            dispatch(setUpdateStatus(status))
+            dispatch(setStatus(response.status))
         }
     });
 }
