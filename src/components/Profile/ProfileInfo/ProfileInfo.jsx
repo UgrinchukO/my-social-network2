@@ -10,8 +10,10 @@ const ProfileInfo = (props) => {
     }
     return (
         <div>
-            <div className={`${s.item} ${s.active}`}>
-                <img src="https://clipart-db.ru/file_content/rastr/background_065.jpg"/>
+            {/*<div>*/}
+            {/*    <img src="https://clipart-db.ru/file_content/rastr/background_065.jpg"/>*/}
+            {/*</div>*/}
+            <div className={s.item}>
                 <img src={props.profile.photos.large}/>
                 <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
             </div>
