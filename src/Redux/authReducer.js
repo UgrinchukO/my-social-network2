@@ -28,39 +28,30 @@ export const setUserAuthData = (id, email, login, isAuth) => ({
     payload: {id, email, login, isAuth}
 })
 
-export const getAuthUserData = (userId) => {
-    return (dispatch) => {
-        authMe.me()
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    let {id, login, email} = response.data.data
-                    dispatch(setUserAuthData(id, login, email, true))
-                }
-            })
-    }
-}
-export const login = (email, password, rememberMe) => {
-    return (dispatch) => {
-        authMe.login(email, password, rememberMe)
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    dispatch(getAuthUserData())
-                } else {
-                    let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error"
-                    dispatch(stopSubmit('login', {_error: message}))
-                }
-            })
+export const getAuthUserData = (userId) => async (dispatch) => {
+    const response = await authMe.me()
+    if (response.data.resultCode === 0) {
+        let {id, login, email} = response.data.data
+        dispatch(setUserAuthData(id, login, email, true))
     }
 }
 
-export const logout = () => {
-    return (dispatch) => {
-        authMe.logout()
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    dispatch(setUserAuthData(null, null, null, false))
-                }
-            })
+
+export const login = (email, password, rememberMe) => async (dispatch) => {
+    const response = await authMe.login(email, password, rememberMe)
+    if (response.data.resultCode === 0) {
+        dispatch(getAuthUserData())
+    } else {
+        let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error"
+        dispatch(stopSubmit('login', {_error: message}))
+    }
+}
+
+
+export const logout = () => async (dispatch) => {
+    let response = await authMe.logout()
+    if (response.data.resultCode === 0) {
+        dispatch(setUserAuthData(null, null, null, false))
     }
 }
 

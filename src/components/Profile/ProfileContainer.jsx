@@ -6,7 +6,6 @@ import {getStatus, getUserProfile, updateStatus} from "../../Redux/reducerProfil
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 
-
 class ProfileContainer extends React.Component {
     componentDidMount() {
         let userId = this.props.match.params.userId
